@@ -8,10 +8,10 @@ test('Creates a new object with name, id, email, and office number values', ( ) 
     expect(manager.office).toBe('59');
 });
 
-test('officeNumber method returns the passed office number', ( ) => {
+test('officeNumber method returns the passed office number argument', ( ) => {
     expect(manager.getOfficeNumber()).toBe('59');
 });
 
-test('getRole method returns "Manager"', ( ) => {
+test('getRole overrides Employee method returns "Manager"', ( ) => {
     expect(manager.getRole()).toBe('Manager');
 });

@@ -1,11 +1,10 @@
 // packages needed for this application
 const fs = require("fs");
 const inquirer = require("./node_modules/inquirer");
-const genMarkdown = require("./src/generateHtml");
-const employeeClass = require("./lib/Employee");
-const managerClass = require("./lib/Manager");
-const engineerClass = require("./lib/Engineer");
-const internClass = require("./lib/Intern");
+const genHTML = require("./src/generateHtml");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 // an array to store emplyee data to be rendered in html 
 let employeeData = [];
@@ -77,8 +76,6 @@ const questions = [
         ],
     }
 ];
-
-let employeesArr = [];
 
 // function to decide where to cont. asking inquirer prompt questions or finish and create html file
 function employeeQuestionAnswers () {

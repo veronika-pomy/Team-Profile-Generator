@@ -1,7 +1,7 @@
 const Employee = require('../lib/Employee');
 const employee = new Employee('Veronika','77777','veronika@gmail.com');
 
-test('Creates a new object with name, id and email values', ( ) => {
+test('Creates a new object with name, id and email arguments', ( ) => {
     expect(employee.name).toBe('Veronika');
     expect(employee.id).toBe('77777');
     expect(employee.email).toBe('veronika@gmail.com');
