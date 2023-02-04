@@ -2,10 +2,10 @@
 const fs = require("fs");
 const inquirer = require("./node_modules/inquirer");
 const genMarkdown = require("./src/generateHtml");
-const employeeClass = require("./lib/employee");
-const managerClass = require("./lib/manager");
-const engineerClass = require("./lib/engineer");
-const internClass = require("./lib/intern");
+const employeeClass = require("./lib/Employee");
+const managerClass = require("./lib/Manager");
+const engineerClass = require("./lib/Engineer");
+const internClass = require("./lib/Intern");
 
 // an array to store emplyee data to be rendered in html 
 let employeeData = [];
@@ -29,7 +29,7 @@ const questions = [
     },
     {
         type: 'list',
-        name: 'title',
+        name: 'role',
         message: 'Employee role:',
         choices: [
             'Manager',
@@ -42,7 +42,7 @@ const questions = [
         name: 'office',
         message: 'Employee office number:',
         when: (answers) => {
-            if (answers.title === 'Manager') {
+            if (answers.role === 'Manager') {
                 return true;
             };
         }
@@ -52,7 +52,7 @@ const questions = [
         name: 'github',
         message: 'Employee GitHub profile:',
         when: (answers) => {
-            if (answers.title === 'Engineer') {
+            if (answers.role === 'Engineer') {
                 return true;
             };
         }
@@ -62,7 +62,7 @@ const questions = [
         name: 'school',
         message: 'Employee school name:',
         when: (answers) => {
-            if (answers.title === 'Intern') {
+            if (answers.role === 'Intern') {
                 return true;
             };
         }
