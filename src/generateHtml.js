@@ -1,10 +1,77 @@
-// write function that generates manager's profile
+const { default: InputPrompt } = require("inquirer/lib/prompts/input");
 
-// write function that generates engineers' profiles
+// function to generate a profile html code based on role of employee
+function choices (input) {
+    if (input.getRole() === "Manager") {
+        return generateManagerProfile(input);
+    } else if (input.getRole() === "Engineer") {
+        return generateEngineerProfile(input);
+    } else if (input.getRole() === "Intern") {
+        return generateInternProfile(input);
+    }
+};
 
-// write function that generates intern's profiles
+// generate team profile html code 
+function generateTeamProfiles(data) {
 
+    // sort array data to have manager, engineer, intern profiles rendered in that order, regardless of user input order
+    data.sort((a,b) => (a.order > b.order) ? 1 : (a.order < b.order ? -1 : 0));
 
+    // set up string parameters to input data into
+    let dataString = '';
+    let dataToRender;
+
+    // use choices function to get a string of html code to insert later
+    for (let i = 0; i < data.length; i++) {
+        let dataOutput = choices(data[i]);
+        dataToRender = dataString.concat(dataOutput)
+        dataString = dataToRender;
+    }
+
+    // return string of html code to inserted into the file that will be written
+    return dataToRender;
+};
+
+// generate manager's profile
+function generateManagerProfile(dataManager) {
+    return `
+        <div id="manager">
+            <h3 class="name">${dataManager.name}</h3>
+            <p class="role">Team Manager</p>
+            <p class="id">${dataManager.id}</p>
+            <p class="email"><a href="mailto:${dataManager.email}">${dataManager.email}</a></p>
+            <p class="office">${dataManager.office}</p>
+        </div>
+    `
+};
+ 
+// generate engineers' profiles
+function generateEngineerProfile(dataEngineer) {
+    return `
+        <div id="engineer">
+            <h3 class="name">${dataEngineer.name}</h3>
+            <p class="role">Engineer</p>
+            <p class="id">${dataEngineer.id}</p>
+            <p class="email"><a href="mailto:${dataEngineer.email}">${dataEngineer.email}</a></p>
+            <p class="git"><a href="https://github.com/${dataEngineer.github}" target="_blank">${dataEngineer.github}</a></p>
+        </div>
+    `
+};
+
+// generate intern's profiles
+function generateInternProfile(dataIntern) {
+    return `
+        <div id="intern">
+            <h3 class="name">${dataIntern.name}</h3>
+            <p class="role">Intern</p>
+            <p class="id">${dataIntern.id}</p>
+            <p class="email"><a href="mailto:${dataIntern.email}">${dataIntern.email}</a></p>
+            <p class="school">${dataIntern.school}</p>
+        </div>
+    `
+};
+
+// write html file 
 function generateHtml(data) {
     return `
 <!DOCTYPE html>
@@ -13,67 +80,20 @@ function generateHtml(data) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Team Profile</title>
 </head>
 <body>
 
     <header>
-        <h1>Team Profiles</h1>
+        <h1>My Team Profiles</h1>
     </header>
 
     <main class="profile-box">
 
-        <div id="manager">
-            <h3 class="name"><h3>
-            <p class="title"><p>
-            <p class="id"></p>
-            <p class="email"></p>
-            <p class="office"></p>
-        </div>
-
-        <div id="engineer">
-            <h3 class="name"></h3>
-            <p class="title"></p>
-            <p class="id"></p>
-            <p class="email"></p>
-            <p class="git"></p>
-        </div>
-
-        <div id="engineer">
-            <h3 class="name"></h3>
-            <p class="title"></p>
-            <p class="id"></p>
-            <p class="email"></p>
-            <p class="git"></p>
-        </div>
-
-        <div id="engineer">
-            <h3 class="name"></h3>
-            <p class="title"></p>
-            <p class="id"></p>
-            <p class="email"></p>
-            <p class="git"></p>
-        </div>
-
-        <div id="engineer">
-            <h3 class="name"></h3>
-            <p class="title"></p>
-            <p class="id"></p>
-            <p class="email"></p>
-            <p class="git"></p>
-        </div>
-        
-        <div id="intern">
-            <h3 class="name"></h3>
-            <p class="title"></p>
-            <p class="id"></p>
-            <p class="email"></p>
-            <p class="school"></p>
-        </div>
+        ${generateTeamProfiles(data)}
 
     </main>
-
-    
 </body>
 </html>   
 `
