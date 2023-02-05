@@ -1,4 +1,48 @@
-/*checking that css was linked properly and works */
 body {
-    background-color: wheat;
+    background-color: snow;
+    font-family: 'Roboto Mono', monospace;
+}
+
+header {
+    border: 2px dashed black;
+}
+
+h1 {
+    text-align: center;
+    padding: 2vh;
+    overflow: hidden;
+}
+
+.profile-box {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.team {
+    overflow: hidden;
+    margin: 6vh 3vw 0 3vw;
+    padding: 2vh 2vw 2vh 2vw;
+    border: 2px dashed black;
+    width: 22vw;
+    height: 24vh;
+}
+
+.team:hover {
+    border: 2px solid black;
+}
+
+/* for smaller screens and smartphones set flex to column for better UX and readability */
+
+@media screen and (max-width: 950px) {
+    .profile-box {
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .team {
+        width: 95%;
+        height: auto;
+        margin: 1vh 2vw 0 2vw;
+    }
 }

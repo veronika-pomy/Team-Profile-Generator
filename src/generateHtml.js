@@ -35,12 +35,12 @@ function generateTeamProfiles(data) {
 // generate manager's profile
 function generateManagerProfile(dataManager) {
     return `
-        <div id="manager">
+        <div class="team">
             <h3 class="name">${dataManager.name}</h3>
             <p class="role">Team Manager</p>
-            <p class="id">${dataManager.id}</p>
+            <p class="id">ID: ${dataManager.id}</p>
             <p class="email"><a href="mailto:${dataManager.email}">${dataManager.email}</a></p>
-            <p class="office">${dataManager.office}</p>
+            <p class="office">Office Number: ${dataManager.office}</p>
         </div>
     `
 };
@@ -48,12 +48,12 @@ function generateManagerProfile(dataManager) {
 // generate engineers' profiles
 function generateEngineerProfile(dataEngineer) {
     return `
-        <div id="engineer">
+        <div class="team">
             <h3 class="name">${dataEngineer.name}</h3>
             <p class="role">Engineer</p>
-            <p class="id">${dataEngineer.id}</p>
+            <p class="id">ID: ${dataEngineer.id}</p>
             <p class="email"><a href="mailto:${dataEngineer.email}">${dataEngineer.email}</a></p>
-            <p class="git"><a href="https://github.com/${dataEngineer.github}" target="_blank">${dataEngineer.github}</a></p>
+            <p class="git">GitHub: <a href="https://github.com/${dataEngineer.github}" target="_blank">${dataEngineer.github}</a></p>
         </div>
     `
 };
@@ -61,12 +61,12 @@ function generateEngineerProfile(dataEngineer) {
 // generate intern's profiles
 function generateInternProfile(dataIntern) {
     return `
-        <div id="intern">
+        <div class="team">
             <h3 class="name">${dataIntern.name}</h3>
             <p class="role">Intern</p>
-            <p class="id">${dataIntern.id}</p>
+            <p class="id">ID: ${dataIntern.id}</p>
             <p class="email"><a href="mailto:${dataIntern.email}">${dataIntern.email}</a></p>
-            <p class="school">${dataIntern.school}</p>
+            <p class="school">School: ${dataIntern.school}</p>
         </div>
     `
 };
@@ -80,6 +80,9 @@ function generateHtml(data) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <title>Team Profile</title>
 </head>
