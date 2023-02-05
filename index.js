@@ -158,5 +158,5 @@ function init ( ) {
     .catch((error) => console.log(error))
 }
 
-// call init 
+// initialize app
 init( );
