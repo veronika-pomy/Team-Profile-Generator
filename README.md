@@ -89,4 +89,4 @@ This list includes resources used for the project.
 
 <!-- License & badge -->
 [license-shield]: https://img.shields.io/badge/license-MIT-blue?style=for-the-badge
-[license-url]: https://github.com/veronika-pomy/Team-Profile-Generator/blob/main/LICENSE
+[license-url]: https://github.com/veronika-pomy/Readme-Generator/blob/main/LICENSE
